@@ -175,6 +175,14 @@ public class Appointment extends Intervention{
 	}
 
 	
+	public void updateAppointment(int id, Appointment ob) {
+		
+		Appointment app = retrieveAppointment(id);
+		
+		createAppointment(ob);
+	}
+	
+	
 	public void deleteAppointment(int sid){
 		
 		RandomAccessFile file = null;
