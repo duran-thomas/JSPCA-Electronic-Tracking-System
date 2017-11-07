@@ -221,8 +221,13 @@ public class AddNewRecord {
 			String date = sdf.format(dateChooser.getDate());
 			
 			
+<<<<<<< HEAD
 			Appointment x = new Appointment(fName.getText(), lName.getText(), teleNum.getText(), animal, breed.getText(), gender, age2, reason.getText(), payment, amount, location, idNum.getText(), date);
 			x.saveAppointment(x);
+=======
+		//	Appointment x = new Appointment(fName.getText(), lName.getText(), teleNum.getText(), animal, breed.getText(), gender, age2, reason.getText(), payment, amount, location, idNum.getText(), date);
+		//	x.saveAppointment(x);
+>>>>>>> Added write to random file method.
 			System.out.println("Button Pressed");
 		}
 	});
