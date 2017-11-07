@@ -1,8 +1,7 @@
 package Classes;
 
 import java.io.*;
-
-
+import java.util.RandomAccess;
 import java.util.Scanner;
 
 public class Appointment extends Intervention{
@@ -61,17 +60,19 @@ public class Appointment extends Intervention{
 		this.owner = owner;
 	}
 	
-
-	public void writeAppointment(Appointment obj) {
+//Create a file and initialize byte space for 100 records
+	public void initiallizeAppointment(Appointment obj) {
 		
+		int max = 100;
 		RandomAccessFile file = null;
 		
 		try {
 			
 				file = new RandomAccessFile(new File("appointment.dat"),"rw");
-				long FileSize = file.length();
-				file.seek((obj.getIdNumber() - 500) * Appointment.FileSize);
-				
+				for(int idx = 1; idx <=max; idx++) {
+					
+					file.seek((idx - 1) * (4+(25*2) + (25*2)));
+							
 				file.writeUTF(obj.owner.getfName());
 				file.writeUTF(obj.owner.getlName());
 				file.writeUTF(obj.owner.getTeleNum());
@@ -85,6 +86,7 @@ public class Appointment extends Intervention{
 				file.writeUTF(obj.location);
 				file.writeInt(obj.idNumber);
 				file.writeUTF(obj.date);
+				}
 			
 			}catch(IOException e){
 				e.printStackTrace();
@@ -98,84 +100,80 @@ public class Appointment extends Intervention{
 	}
 	
 	
-	
-
-	public void saveAppointment(Appointment obj){
-		FileWriter aFile = null;
-		try{
-			aFile = new FileWriter("appointment.txt", true);
-			String appoint = obj.owner.getfName() + "\t" + obj.owner.getlName() + "\t" + obj.owner.getTeleNum() + "\t" + obj.owner.animal.getType() + "\t" + obj.owner.animal.getBreed() + "\t" + obj.owner.animal.getGender() + "\t" + obj.owner.animal.getAge() + "\t" + obj.getReason() + "\t" + obj.owner.pay.getType() + "\t" + obj.owner.pay.amt + "\t" + obj.location + "\t" + obj.idNumber + "\t" + obj.date + "\n";
-			aFile.write(appoint);
+	public void createAppointment(Appointment obj) {
 			
+			RandomAccessFile file = null;
+			
+			try {
+				
+					file = new RandomAccessFile(new File("appointment.dat"),"rw");
+						
+						file.seek((obj.idNumber - 1) * (4+(25*2) + (25*2)));
+								
+					file.writeUTF(obj.owner.getfName());
+					file.writeUTF(obj.owner.getlName());
+					file.writeUTF(obj.owner.getTeleNum());
+					file.writeUTF(obj.owner.animal.getType());
+					file.writeUTF(obj.owner.animal.getBreed());
+					file.writeUTF(obj.owner.animal.getGender());
+					file.writeInt(obj.owner.animal.getAge());
+					file.writeUTF(obj.getReason());
+					file.writeUTF(obj.owner.pay.getType());
+					file.writeFloat(obj.owner.pay.amt);
+					file.writeUTF(obj.location);
+					file.writeInt(obj.idNumber);
+					file.writeUTF(obj.date);
+				
+				}catch(IOException e){
+					e.printStackTrace();
+				}finally{
+					try{
+						file.close();
+					}catch(IOException x){
+						x.printStackTrace();
+					}
+				}
+		}
+	
+	
+	public Appointment retrieveAppointment(int sid) {
+		
+		RandomAccessFile file = null;
+		Appointment app = new Appointment();
+				
+		try {
+			
+			file = new RandomAccessFile(new File("appointment.dat"),"rw");
+			file.seek((sid - 1) * (4+(25*2) + (25*2)));
+			
+			String fn = file.readUTF();
+			String ln = file.readUTF();
+			String phone = file.readUTF();
+			String animalType = file.readUTF();
+			String breed = file.readUTF();
+			String gender= file.readUTF();
+			int age = file.readInt();
+			String reason = file.readUTF();
+			String payType = file.readUTF();
+			float amt = file.readFloat();
+			String location = file.readUTF();
+			int iD = file.readInt();
+			String date = file.readUTF();
+			
+			app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
+		
 		}catch(IOException e){
 			e.printStackTrace();
 		}finally{
 			try{
-				aFile.close();
+				file.close();
 			}catch(IOException x){
 				x.printStackTrace();
 			}
 		}
-	}
-	
-
-	public Appointment readAppointment(String phone) {
-		
-		String fname;
-		String lname;
-		String telephone;
-		String animalType;
-		String breed;
-		String gender;
-		int age;
-		String reason;
-		String payType;
-		float amt;
-		String location;
-		String id;
-		String date;
-		
-		Appointment app = new Appointment();
-		Scanner pull = null;
-		
-		try {
-		
-			pull = new Scanner(new File("appointment.dat"));
-			
-			while(pull.hasNext()) {
-				
-				fname = pull.next();
-				lname = pull.next();
-				telephone = pull.next();
-				animalType = pull.next();
-				breed = pull.next();
-				gender = pull.next();
-				age = pull.nextInt();
-				reason = pull.next();
-				payType = pull.next();
-				amt = pull.nextFloat();
-				location = pull.next();
-				id = pull.next();
-				date = pull.next();
-				
-				//app = new Appointment(fname, lname, telephone, animalType, breed, gender, age, reason, payType, amt, location, id, date);
-				
-				if(telephone.equals(phone)) {
-					
-					break;
-				}
-			}
-		}catch(FileNotFoundException e){
-			
-			e.printStackTrace();
-			System.err.println("Error retrieving file");
-		}finally{
-			pull.close();
-		}
-		
 		return app;
 	}
-	
+
 	public void display() {
 		
 		String rec;

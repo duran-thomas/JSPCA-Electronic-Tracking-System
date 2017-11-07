@@ -9,14 +9,11 @@ public class Driver {
 		//Appointment x = new Appointment("Duran", "Thomas", "4040244", "Dog", "PitBull", "Male", 7, "Full", 5000f, "Clinic");
 		//x.saveAppointment(x);
 
-		
 
 		Appointment O = new Appointment();
 		
-		O = O.readAppointment("4190014");
+	//	O = O.readAppointment("4190014");
 		
 		O.display();
-
 	}
-
 }
