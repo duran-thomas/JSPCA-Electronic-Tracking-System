@@ -18,7 +18,9 @@ public class testDriver {
 		Appointment O = new Appointment();
 		
 		//retrieve record using ID number
-		O = O.retrieveAppointment(3);
+	//	O = O.retrieveAppointment(2);
+		
+		O.deleteAppointment(3);
 		
 		O.display();
 	}

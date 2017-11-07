@@ -10,7 +10,7 @@ public class Intervention {
 	public Intervention(){
 		client = new Client();
 
-		idNumber = 2;
+		idNumber = 0;
 		date = "";
 	}
 	

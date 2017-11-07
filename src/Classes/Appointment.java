@@ -174,6 +174,44 @@ public class Appointment extends Intervention{
 		return app;
 	}
 
+	
+	public void deleteAppointment(int sid){
+		
+		RandomAccessFile file = null;
+		Appointment obj = new Appointment();
+				
+		try {
+			
+			file = new RandomAccessFile(new File("appointment.dat"),"rw");
+			file.seek((sid - 1) * (4+(25*2) + (25*2)));
+			
+			file.writeUTF(obj.owner.getfName());
+			file.writeUTF(obj.owner.getlName());
+			file.writeUTF(obj.owner.getTeleNum());
+			file.writeUTF(obj.owner.animal.getType());
+			file.writeUTF(obj.owner.animal.getBreed());
+			file.writeUTF(obj.owner.animal.getGender());
+			file.writeInt(obj.owner.animal.getAge());
+			file.writeUTF(obj.getReason());
+			file.writeUTF(obj.owner.pay.getType());
+			file.writeFloat(obj.owner.pay.amt);
+			file.writeUTF(obj.location);
+			file.writeInt(obj.idNumber);
+			file.writeUTF(obj.date);
+			
+				
+		}catch(IOException e){
+			e.printStackTrace();
+		}finally{
+			try{
+				file.close();
+			}catch(IOException x){
+				x.printStackTrace();
+			}
+		}
+	}
+	
+	
 	public void display() {
 		
 		String rec;
