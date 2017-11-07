@@ -1,17 +1,14 @@
 package Classes;
 
 import java.io.*;
-<<<<<<< HEAD
 
-public class Appointment extends Intervention{
-	
-=======
+
 import java.util.Scanner;
 
 public class Appointment extends Intervention{
 	
 	private static final int FileSize = 0;
->>>>>>> Added write to random file method.
+
 	public String location;
 	Client owner;
 	public String reason;
@@ -22,11 +19,9 @@ public class Appointment extends Intervention{
 		reason = "";
 	}
 	
-<<<<<<< HEAD
-	public Appointment(String fn, String ln, String tele, String type, String breed, String gender, int age, String reason, String payType, float amt, String location, String idnum, String date) {
-=======
+
 	public Appointment(String fn, String ln, String tele, String type, String breed, String gender, int age, String reason, String payType, float amt, String location, int idnum, String date) {
->>>>>>> Added write to random file method.
+
 		this.location = location;
 		owner = new Client(fn, ln, tele, type, breed, gender, age, payType, amt);
 		this.date = date;
@@ -66,8 +61,7 @@ public class Appointment extends Intervention{
 		this.owner = owner;
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public void writeAppointment(Appointment obj) {
 		
 		RandomAccessFile file = null;
@@ -105,7 +99,7 @@ public class Appointment extends Intervention{
 	
 	
 	
->>>>>>> Added write to random file method.
+
 	public void saveAppointment(Appointment obj){
 		FileWriter aFile = null;
 		try{
@@ -124,8 +118,7 @@ public class Appointment extends Intervention{
 		}
 	}
 	
-<<<<<<< HEAD
-=======
+
 	public Appointment readAppointment(String phone) {
 		
 		String fname;
@@ -196,5 +189,4 @@ public class Appointment extends Intervention{
 		
 		System.out.println(rec);
 	}
->>>>>>> Added write to random file method.
 }
