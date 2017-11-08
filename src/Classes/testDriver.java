@@ -9,21 +9,21 @@ public class testDriver {
 	//	Appointment Ob = new Appointment(" ", " ", "0000000", " ", " ", " ", 0, " ", "", 0f, " ",0 , " ");
 	
 	/*	Used to create the record*/
-		Appointment O = new Appointment("Mardii", "Dking", "7162534", "Dog", "PitBull", "Male", 2, "training", "full", 22.00f, "Kingston", 3, "0603-2013");
+//		Appointment O = new Appointment("Shemar", "Henry", "7162534", "Puppy", "PitBull", "Male", 2, "training", "full", 22.00f, "Kingston", 10, "0603-2013");
 		
 			
-	//	O.initiallizeAppointment(Ob);
-	//	O.createAppointment(O);
+//		O.initiallizeAppointment(O);
+//		O.createAppointment(O);
 		
 	//	Appointment O = new Appointment();
 		
 	//	retrieve record using ID number
-	//	O = O.retrieveAppointment(3);
+//		O = O.retrieveAppointment(1);
 		
 	//	O.deleteAppointment(3);
 		
-		O.updateAppointment(2, O);
+//		O.updateAppointment(2, O);
 		
-		O.display();
+//		O.display();
 	}
 }
