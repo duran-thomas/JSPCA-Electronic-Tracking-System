@@ -163,6 +163,7 @@ public class AddNewRecord {
 		age.setColumns(10);
 //		int age2 = Integer.parseInt(age.getText());
 		
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(22, 386, 84, 25);
 		frame.getContentPane().add(btnBack);

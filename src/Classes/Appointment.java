@@ -60,7 +60,7 @@ public class Appointment extends Intervention{
 		this.owner = owner;
 	}
 	
-//Create a file and initialize byte space for 100 records
+	//Create a file and initialize byte space for 100 records
 	public void initiallizeAppointment(Appointment obj) {
 		
 		int max = 100;
@@ -71,7 +71,7 @@ public class Appointment extends Intervention{
 				file = new RandomAccessFile(new File("appointment.dat"),"rw");
 				for(int idx = 1; idx <=max; idx++) {
 					
-					file.seek((idx - 1) * (4+(25*2) + (25*2)));
+				file.seek((idx - 1) * (4+(25*2) + (25*2)));
 							
 				file.writeUTF(obj.owner.getfName());
 				file.writeUTF(obj.owner.getlName());
@@ -111,32 +111,19 @@ public class Appointment extends Intervention{
 					file.seek((obj.idNumber - 1) * (4+(25*2) + (25*2)));
 								
 					file.writeUTF(obj.owner.getfName());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.getlName());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.getTeleNum());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.animal.getType());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.animal.getBreed());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.animal.getGender());
-					file.writeUTF("\t");
 					file.writeInt(obj.owner.animal.getAge());
-					file.writeUTF("\t");
 					file.writeUTF(obj.getReason());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.pay.getType());
-					file.writeUTF("\t");
 					file.writeFloat(obj.owner.pay.amt);
-					file.writeUTF("\t");
 					file.writeUTF(obj.location);
-					file.writeUTF("\t");
 					file.writeInt(obj.idNumber);
-					file.writeUTF("\t");
 					file.writeUTF(obj.date);
-					file.writeUTF("\t");
-				
+								
 				}catch(IOException e){
 					e.printStackTrace();
 				}finally{
@@ -147,7 +134,6 @@ public class Appointment extends Intervention{
 					}
 				}
 		}
-	
 	
 	public Appointment retrieveAppointment(int sid) {
 		
