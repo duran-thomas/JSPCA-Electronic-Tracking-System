@@ -1,13 +1,9 @@
 package Classes;
 
 import java.io.*;
-import java.util.RandomAccess;
-import java.util.Scanner;
 
 public class Appointment extends Intervention{
 	
-	private static final int FileSize = 0;
-
 	public String location;
 	Client owner;
 	public String reason;
@@ -175,8 +171,7 @@ public class Appointment extends Intervention{
 	
 	public void updateAppointment(int id, Appointment ob) {
 		
-		Appointment app = retrieveAppointment(id);
-		
+		retrieveAppointment(id);
 		createAppointment(ob);
 	}
 	

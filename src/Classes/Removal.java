@@ -147,7 +147,7 @@ public class Removal extends Intervention{
 
 		try {
 
-			file = new RandomAccessFile(new File("appointment.dat"),"rw");
+			file = new RandomAccessFile(new File("removal.dat"),"rw");
 			file.seek((sid - 1) * (4+(25*2) + (25*2)));
 
 			String fn = file.readUTF();
@@ -160,7 +160,7 @@ public class Removal extends Intervention{
 			String reason = file.readUTF();
 			String payType = file.readUTF();
 			float amt = file.readFloat();
-			String location = file.readUTF();
+			String address = file.readUTF();
 			int iD = file.readInt();
 			String date = file.readUTF();
 
@@ -181,8 +181,7 @@ public class Removal extends Intervention{
 	
 	public void updateRemoval(int id, Removal ob) {
 
-		Removal rem = retrieveRemoval(id);
-
+		retrieveRemoval(id);
 		createRemoval(ob);
 	}
 	
@@ -194,7 +193,7 @@ public class Removal extends Intervention{
 
 		try {
 
-			file = new RandomAccessFile(new File("appointment.dat"),"rw");
+			file = new RandomAccessFile(new File("removal.dat"),"rw");
 			file.seek((sid - 1) * (4+(25*2) + (25*2)));
 
 			file.writeUTF(obj.owner.getfName());
