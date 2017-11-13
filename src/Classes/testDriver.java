@@ -25,5 +25,36 @@ public class testDriver {
 		O.updateAppointment(2, O);
 		
 		O.display();
+		
+		/*
+		  
+		  
+		  
+		  
+		/************************************ Removal *****************************************/ 
+		 
+		 /* Used to Initialize file */ 	
+	//	Removal re = new Appointment(" ", " ", "0000000", " ", " ", " ", 0, " ", "", 0f, " ",0 , " ");
+	
+	/*	Used to create the record*/
+	//	Removal re = new Removal("Mardii", "Dking", "7162534", "Dog", "PitBull", "Male", 2, "training", "full", 22.00f, "Kingston", 3, "0603-2013");
+		
+			
+	//	re.initiallizeAppointment(re);
+	//	re.createRemoval(re);
+		
+	//	Removal re = new Removal();
+		
+	//	retrieve record using ID number
+	//	re = O.retrieveRemovalt(3);
+		
+	//	re.deleteRemoval(3);
+		
+	//	re.updateRemoval(2, re);
+		
+	//	re.display();
+		 
+		
+		
 	}
 }
