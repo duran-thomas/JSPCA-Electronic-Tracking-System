@@ -60,7 +60,7 @@ public class Appointment extends Intervention{
 		this.owner = owner;
 	}
 	
-//Create a file and initialize byte space for 100 records
+	//Create a file and initialize byte space for 100 records
 	public void initiallizeAppointment(Appointment obj) {
 		
 		int max = 100;
@@ -71,7 +71,7 @@ public class Appointment extends Intervention{
 				file = new RandomAccessFile(new File("appointment.dat"),"rw");
 				for(int idx = 1; idx <=max; idx++) {
 					
-					file.seek((idx - 1) * (4+(25*2) + (25*2)));
+				file.seek((idx - 1) * (4+(25*2) + (25*2)));
 							
 				file.writeUTF(obj.owner.getfName());
 				file.writeUTF(obj.owner.getlName());
@@ -108,7 +108,7 @@ public class Appointment extends Intervention{
 				
 					file = new RandomAccessFile(new File("appointment.dat"),"rw");
 						
-						file.seek((obj.idNumber - 1) * (4+(25*2) + (25*2)));
+					file.seek((obj.idNumber - 1) * (4+(25*2) + (25*2)));
 								
 					file.writeUTF(obj.owner.getfName());
 					file.writeUTF(obj.owner.getlName());
@@ -123,7 +123,7 @@ public class Appointment extends Intervention{
 					file.writeUTF(obj.location);
 					file.writeInt(obj.idNumber);
 					file.writeUTF(obj.date);
-				
+								
 				}catch(IOException e){
 					e.printStackTrace();
 				}finally{
@@ -134,7 +134,6 @@ public class Appointment extends Intervention{
 					}
 				}
 		}
-	
 	
 	public Appointment retrieveAppointment(int sid) {
 		
@@ -173,7 +172,6 @@ public class Appointment extends Intervention{
 		}
 		return app;
 	}
-
 	
 	public void updateAppointment(int id, Appointment ob) {
 		

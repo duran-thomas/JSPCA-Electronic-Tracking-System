@@ -163,6 +163,7 @@ public class AddNewRecord {
 		age.setColumns(10);
 //		int age2 = Integer.parseInt(age.getText());
 		
+		
 		JButton btnBack = new JButton("Back");
 		btnBack.setBounds(22, 386, 84, 25);
 		frame.getContentPane().add(btnBack);
@@ -211,6 +212,7 @@ public class AddNewRecord {
 		btnSubmit.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			int age2 = Integer.parseInt(age.getText());
+			int id = Integer.parseInt(idNum.getText());
 			Float amount = Float.parseFloat(amt.getText());
 			String gender = gndr.getSelectedItem().toString();
 			String animal = comboBox.getSelectedItem().toString();
@@ -222,9 +224,8 @@ public class AddNewRecord {
 			
 			
 
-		//	Appointment x = new Appointment(fName.getText(), lName.getText(), teleNum.getText(), animal, breed.getText(), gender, age2, reason.getText(), payment, amount, location, idNum.getText(), date);
-		//	x.saveAppointment(x);
-			System.out.println("Button Pressed");
+			Appointment x = new Appointment(fName.getText(), lName.getText(), teleNum.getText(), animal, breed.getText(), gender, age2, reason.getText(), payment, amount, location, id, date);
+			x.createAppointment(x);
 		}
 	});
 		btnSubmit.setBounds(477, 386, 97, 25);
