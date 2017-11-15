@@ -35,10 +35,10 @@ public class testDriver {
 		/************************************ Removal *****************************************/ 
 		 
 		 /* Used to Initialize file */ 	
-	//	Removal re = new Appointment(" ", " ", "0000000", " ", " ", " ", 0, " ", "", 0f, " ",0 , " ");
+		//Removal re = new Appointment(" ", " ", "0000000", " ", " ", " ", 0, " ", "", 0f, " ",0 , " ");
 	
 	/*	Used to create the record*/
-	//	Removal re = new Removal("Mardii", "Dking", "7162534", "Dog", "PitBull", "Male", 2, "training", "full", 22.00f, "Kingston", 3, "0603-2013");
+	Removal re = new Removal("Mardii", "Dking", "7162534", "Dog", "PitBull", "Male", 2, "training", "full", 22.00f, "Kingston", 3, "0603-2013", "");
 		
 			
 	//	re.initiallizeAppointment(re);
@@ -47,7 +47,7 @@ public class testDriver {
 	//	Removal re = new Removal();
 		
 	//	retrieve record using ID number
-	//	re = O.retrieveRemovalt(3);
+		re.retrieveRemoval(3);
 		
 	//	re.deleteRemoval(3);
 		

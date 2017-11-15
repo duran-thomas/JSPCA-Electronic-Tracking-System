@@ -1,6 +1,9 @@
 package Classes;
 
+import java.awt.Component;
 import java.io.*;
+
+import javax.swing.JOptionPane;
 
 public class Appointment extends Intervention{
 	
@@ -120,8 +123,11 @@ public class Appointment extends Intervention{
 					file.writeInt(obj.idNumber);
 					file.writeUTF(obj.date);
 								
+					Component frame = null;
+					JOptionPane.showMessageDialog(frame, "Appointment Saved");
+					
 				}catch(IOException e){
-					e.printStackTrace();
+					
 				}finally{
 					try{
 						file.close();

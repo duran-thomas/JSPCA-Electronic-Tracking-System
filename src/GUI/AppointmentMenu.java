@@ -1,17 +1,15 @@
 package GUI;
 
 import java.awt.EventQueue;
-import java.awt.Font;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.BorderLayout;
+import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class MainMenu {
+public class AppointmentMenu {
 
 	JFrame frame;
 
@@ -22,7 +20,7 @@ public class MainMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainMenu window = new MainMenu();
+					AppointmentMenu window = new AppointmentMenu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +32,7 @@ public class MainMenu {
 	/**
 	 * Create the application.
 	 */
-	public MainMenu() {
+	public AppointmentMenu() {
 		initialize();
 	}
 
@@ -43,22 +41,22 @@ public class MainMenu {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.getContentPane().setFont(new Font("Lucida Bright", Font.BOLD, 12));
-		frame.setBounds(100, 100, 600, 450); 
+		frame.setBounds(100, 100, 450, 300);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblMainMenu = new JLabel("Main Menu");
-		lblMainMenu.setFont(new Font("Lucida Bright", Font.BOLD, 20));
-		lblMainMenu.setBounds(242, 12, 110, 25);
-		frame.getContentPane().add(lblMainMenu);
+		JLabel lblAppointmentMenu = new JLabel("Appointment Menu");
+		lblAppointmentMenu.setFont(new Font("Lucida Bright", Font.BOLD, 20));
+		lblAppointmentMenu.setBounds(123, 22, 194, 24);
+		frame.getContentPane().add(lblAppointmentMenu);
 		
-		JButton btnNewButton = new JButton("Intervention");
+		JButton btnNewButton = new JButton("Add");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AppointmentMenu window = new AppointmentMenu();
+							AddNewRecord window = new AddNewRecord();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -67,16 +65,16 @@ public class MainMenu {
 				});
 			}
 		});
-		btnNewButton.setBounds(85, 151, 127, 25);
+		btnNewButton.setBounds(56, 90, 117, 25);
 		frame.getContentPane().add(btnNewButton);
 		
-		JButton btnNewButton_1 = new JButton("Reports");
+		JButton btnNewButton_1 = new JButton("View");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							ReportMenu window = new ReportMenu();
+							ViewAppointments window = new ViewAppointments();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -85,16 +83,24 @@ public class MainMenu {
 				});
 			}
 		});
-		btnNewButton_1.setBounds(401, 151, 127, 25);
+		btnNewButton_1.setBounds(275, 90, 117, 25);
 		frame.getContentPane().add(btnNewButton_1);
 		
-		JButton btnNewButton_2 = new JButton("Back");
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton btnNewButton_2 = new JButton("Update");
+		btnNewButton_2.setBounds(56, 153, 117, 25);
+		frame.getContentPane().add(btnNewButton_2);
+		
+		JButton btnNewButton_3 = new JButton("Delete");
+		btnNewButton_3.setBounds(275, 153, 117, 25);
+		frame.getContentPane().add(btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("Back");
+		btnNewButton_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							WelcomeScreen window = new WelcomeScreen();
+							MainMenu window = new MainMenu();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -103,20 +109,8 @@ public class MainMenu {
 				});
 			}
 		});
-		btnNewButton_2.setBounds(242, 290, 117, 25);
-		frame.getContentPane().add(btnNewButton_2);
-		
-		JButton btnNewButton_3 = new JButton("Exit");
-		btnNewButton_3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		btnNewButton_3.setBounds(268, 328, 68, 25);
-		frame.getContentPane().add(btnNewButton_3);
-		frame.setBounds(100, 100, 600, 450);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		
+		btnNewButton_4.setBounds(181, 217, 88, 25);
+		frame.getContentPane().add(btnNewButton_4);
 	}
+
 }

@@ -6,6 +6,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.SwingConstants;
+
+import com.sun.java.swing.plaf.windows.resources.windows;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -13,7 +16,7 @@ import java.awt.event.ActionEvent;
 
 public class WelcomeScreen {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -37,13 +40,15 @@ public class WelcomeScreen {
 	public WelcomeScreen() {
 		initialize();
 	}
-
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 600, 450); 
+		frame.setTitle("Welcome!");
 		frame.getContentPane().setLayout(null);
 		
 		JLabel lblJspca = new JLabel("Jamaica Society for the Prevention of Cruelty to Animals");
@@ -58,6 +63,20 @@ public class WelcomeScreen {
 		frame.getContentPane().add(lblVetClinic);
 		
 		JButton btnEnter = new JButton("Enter");
+		btnEnter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							MainMenu window = new MainMenu();
+							window.frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnEnter.setBounds(43, 299, 117, 25);
 		frame.getContentPane().add(btnEnter);
 		
@@ -70,7 +89,7 @@ public class WelcomeScreen {
 		btnNewButton.setBounds(43, 358, 117, 25);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel = new JLabel("Background");
+		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setEnabled(false);
 		lblNewLabel.setIcon(new ImageIcon("/home/kh40sx/workspace/JSPCA/assets/puppy.jpg"));
 		lblNewLabel.setBounds(0, -31, 1115, 1041);

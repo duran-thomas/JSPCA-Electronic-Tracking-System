@@ -1,42 +1,32 @@
 package GUI;
 
-import Classes.*;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JSeparator;
-import java.awt.Color;
-import javax.swing.JMenuBar;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
-import javax.swing.JRadioButton;
-import javax.swing.JCheckBox;
-import javax.swing.JRadioButtonMenuItem;
-import javax.swing.JFormattedTextField;
-import javax.swing.JButton;
-import com.toedter.calendar.JCalendar;
 import com.toedter.calendar.JDateChooser;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.text.*;
 
-public class AddNewRecord {
+import Classes.*;
 
-	JFrame frame;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+
+public class AddNewRemoval {
+
+	private JFrame frame;
 	private JTextField fName;
 	private JTextField lName;
 	private JTextField teleNum;
 	private JTextField amt;
 	private JTextField breed;
-	private JTextField age;
-	private JTextField idNum;
-	private JTextField reason;
+	private JTextField address;
 
 	/**
 	 * Launch the application.
@@ -45,7 +35,7 @@ public class AddNewRecord {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddNewRecord window = new AddNewRecord();
+					AddNewRemoval window = new AddNewRemoval();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -57,7 +47,7 @@ public class AddNewRecord {
 	/**
 	 * Create the application.
 	 */
-	public AddNewRecord() {
+	public AddNewRemoval() {
 		initialize();
 	}
 
@@ -70,11 +60,11 @@ public class AddNewRecord {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblAddAppointment = new JLabel("Add Appointment");
-		lblAddAppointment.setFont(new Font("Lucida Bright", Font.BOLD, 20));
-		lblAddAppointment.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAddAppointment.setBounds(199, 12, 181, 25);
-		frame.getContentPane().add(lblAddAppointment);
+		JLabel lblAddRemoval = new JLabel("Add Removal Request");
+		lblAddRemoval.setFont(new Font("Lucida Bright", Font.BOLD, 20));
+		lblAddRemoval.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblAddRemoval.setBounds(162, 12, 221, 25);
+		frame.getContentPane().add(lblAddRemoval);
 		
 		JLabel lblClientInformation = new JLabel("Client Information");
 		lblClientInformation.setFont(new Font("Lucida Bright", Font.BOLD, 17));
@@ -158,7 +148,7 @@ public class AddNewRecord {
 		lblAge.setBounds(401, 291, 33, 15);
 		frame.getContentPane().add(lblAge);
 		
-		age = new JTextField();
+		JTextField age = new JTextField();
 		age.setBounds(441, 289, 42, 19);
 		frame.getContentPane().add(age);
 		age.setColumns(10);
@@ -166,20 +156,6 @@ public class AddNewRecord {
 		
 		
 		JButton btnBack = new JButton("Back");
-		btnBack.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							AppointmentMenu window = new AppointmentMenu();
-							window.frame.setVisible(true);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
 		btnBack.setBounds(22, 386, 84, 25);
 		frame.getContentPane().add(btnBack);
 		
@@ -200,28 +176,37 @@ public class AddNewRecord {
 		lblInterventionNumber.setBounds(49, 49, 151, 15);
 		frame.getContentPane().add(lblInterventionNumber);
 		
-		idNum = new JTextField();
+		JTextField idNum = new JTextField();
 		idNum.setBounds(49, 67, 114, 19);
 		frame.getContentPane().add(idNum);
 		idNum.setColumns(10);
 		
-		JLabel lblClinicLocation = new JLabel("Clinic Location:");
-		lblClinicLocation.setBounds(341, 49, 114, 15);
-		frame.getContentPane().add(lblClinicLocation);
-		
-		JComboBox lctn = new JComboBox();
-		lctn.setModel(new DefaultComboBoxModel(new String[] {"10-Winchester-Road", "Caymanas-Track-Limited"}));
-		lctn.setBounds(341, 64, 192, 24);
-		frame.getContentPane().add(lctn);
-		
 		JLabel lblReason = new JLabel("Reason:");
-		lblReason.setBounds(269, 323, 70, 15);
+		lblReason.setBounds(228, 321, 70, 15);
 		frame.getContentPane().add(lblReason);
 		
-		reason = new JTextField();
-		reason.setBounds(266, 339, 114, 19);
+		JTextField reason = new JTextField();
+		reason.setBounds(225, 337, 114, 19);
 		frame.getContentPane().add(reason);
 		reason.setColumns(10);
+		
+		JLabel lblAddress = new JLabel("Address:");
+		lblAddress.setBounds(404, 321, 70, 15);
+		frame.getContentPane().add(lblAddress);
+		
+		address = new JTextField();
+		address.setColumns(10);
+		address.setBounds(401, 337, 114, 19);
+		frame.getContentPane().add(address);
+		
+		JLabel lblStatus = new JLabel("Status:");
+		lblStatus.setBounds(416, 49, 151, 15);
+		frame.getContentPane().add(lblStatus);
+		
+		JComboBox stat = new JComboBox();
+		stat.setModel(new DefaultComboBoxModel(new String[] {"Euthanized", "Adoption"}));
+		stat.setBounds(415, 64, 137, 24);
+		frame.getContentPane().add(stat);
 		
 		JButton btnSubmit = new JButton("Add");
 		btnSubmit.addActionListener(new ActionListener() {
@@ -232,19 +217,16 @@ public class AddNewRecord {
 			String gender = gndr.getSelectedItem().toString();
 			String animal = comboBox.getSelectedItem().toString();
 			String payment = payType.getSelectedItem().toString();
-			String location = lctn.getSelectedItem().toString();
+			String status = stat.getSelectedItem().toString();
 			
 			SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 			String date = sdf.format(dateChooser.getDate());
-
-			Appointment x = new Appointment(fName.getText(), lName.getText(), teleNum.getText(), animal, breed.getText(), gender, age2, reason.getText(), payment, amount, location, id, date);
-			x.createAppointment(x);
 			
-			
+			Removal x = new Removal(fName.getText(), lName.getText(), teleNum.getText(), animal, breed.getText(), gender, age2, reason.getText(), payment, amount, address.getText(), id, date, status);
+			x.createRemoval(x);
 		}
 	});
 		btnSubmit.setBounds(477, 386, 97, 25);
 		frame.getContentPane().add(btnSubmit);
-		
 	}
 }

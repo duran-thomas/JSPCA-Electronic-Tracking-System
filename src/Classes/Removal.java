@@ -1,28 +1,33 @@
 
 package Classes;
 
+import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+
+import javax.swing.JOptionPane;
 
 public class Removal extends Intervention{
 
 	public String address;
 	Client owner;
 	public String reason;
+	public String status;
 
 	public Removal(){
 		address = "";
 		owner = new Client();
 		reason = "";
+		status = "";
 	}
 
-	public Removal(String fn, String ln, String tele, String type, String breed, String gender, int age, String reason, String payType, float amt, String address, int idnum, String date){
+	public Removal(String fn, String ln, String tele, String type, String breed, String gender, int age, String reason, String payType, float amt, String address, int idnum, String date, String status){
 		this.address = address;
 		owner = new Client(fn, ln, tele, type, breed, gender, age, payType, amt);
-		this.date = date;
 		idNumber = idnum;
 		this.reason = reason;
+		this.status = status;
 	}
 
 	public Removal(Removal obj){
@@ -54,9 +59,17 @@ public class Removal extends Intervention{
 		this.reason = reason;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public void initiallizeRemoval(Removal obj) {
 
-		int max = 100;
+		int max = 500;
 		RandomAccessFile file = null;
 
 		try {
@@ -79,6 +92,11 @@ public class Removal extends Intervention{
 				file.writeUTF(obj.address);
 				file.writeInt(obj.idNumber);
 				file.writeUTF(obj.date);
+				file.writeUTF(obj.status);
+				
+				
+				Component frame = null;
+				JOptionPane.showMessageDialog(frame, "Removal Request Submitted");
 				}
 
 			}catch(IOException e){
@@ -163,9 +181,10 @@ public class Removal extends Intervention{
 			String address = file.readUTF();
 			int iD = file.readInt();
 			String date = file.readUTF();
+			String status = file.readUTF();
 
-			rem = new Removal(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, address, iD, date);
-
+			rem = new Removal(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, address, iD, date, status);
+			
 		}catch(IOException e){
 			e.printStackTrace();
 		}finally{
