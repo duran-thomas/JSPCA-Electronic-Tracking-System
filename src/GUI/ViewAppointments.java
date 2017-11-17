@@ -95,7 +95,7 @@ public class ViewAppointments {
 					model.setColumnIdentifiers(column);
 					model.setRowCount(0);
 					
-					for(int i = 0; i<numRecords; i++){
+					for(int i = 0; i<=numRecords; i++){
 //						String line = tableLines[i].toString().trim();
 						String[] dataRow = getAppointment(i+1);
 						if(dataRow != null){
