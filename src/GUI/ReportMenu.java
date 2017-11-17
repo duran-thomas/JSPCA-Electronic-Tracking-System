@@ -35,7 +35,7 @@ public class ReportMenu {
 	 * Create the application.
 	 */
 	public ReportMenu() {
-		initialize();
+		initialize(); 
 	}
 
 	/**

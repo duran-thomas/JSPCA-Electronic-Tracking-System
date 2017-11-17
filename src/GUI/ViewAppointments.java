@@ -17,12 +17,17 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class ViewAppointments {
 
 	JFrame frame;
 	private JTable table;
 	private JScrollPane scrollPane;
+	private JLabel lblSearch;
+	private JTextField textField;
+	private JButton btnSearch;
 
 	/**
 	 * Launch the application.
@@ -52,7 +57,7 @@ public class ViewAppointments {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1000, 600);
+		frame.setBounds(100, 100, 1000, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -63,7 +68,7 @@ public class ViewAppointments {
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnRefresh = new JButton("Refresh");
+		JButton btnRefresh = new JButton("Refresh Table");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -109,7 +114,7 @@ public class ViewAppointments {
 				}
 			}
 		});
-		btnRefresh.setBounds(899, 316, 89, 25);
+		btnRefresh.setBounds(856, 316, 132, 25);
 		frame.getContentPane().add(btnRefresh);
 		
 		JButton btnNewButton = new JButton("Back");
@@ -127,8 +132,27 @@ public class ViewAppointments {
 				});
 			}
 		});
-		btnNewButton.setBounds(22, 523, 74, 25);
+		btnNewButton.setBounds(23, 380, 74, 25);
 		frame.getContentPane().add(btnNewButton);
+		
+		lblSearch = new JLabel("Search ID:");
+		lblSearch.setBounds(280, 345, 103, 15);
+		frame.getContentPane().add(lblSearch);
+		
+		textField = new JTextField();
+		textField.setBounds(362, 343, 114, 19);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Search For ID
+				
+			}
+		});
+		btnSearch.setBounds(486, 340, 93, 25);
+		frame.getContentPane().add(btnSearch);
 	}
 	
 	public String[] getAppointment(int sid){

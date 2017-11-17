@@ -20,7 +20,7 @@ import javax.swing.JComboBox;
 
 public class AddNewRemoval {
 
-	private JFrame frame;
+	JFrame frame;
 	private JTextField fName;
 	private JTextField lName;
 	private JTextField teleNum;
@@ -156,6 +156,20 @@ public class AddNewRemoval {
 		
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							RemovalMenu window = new RemovalMenu();
+							window.frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
 		btnBack.setBounds(22, 386, 84, 25);
 		frame.getContentPane().add(btnBack);
 		

@@ -8,6 +8,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JSeparator;
 import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -239,6 +241,9 @@ public class AddNewRecord {
 
 			Appointment x = new Appointment(fName.getText(), lName.getText(), teleNum.getText(), animal, breed.getText(), gender, age2, reason.getText(), payment, amount, location, id, date);
 			x.createAppointment(x);
+			
+			Component frame = null;
+			JOptionPane.showMessageDialog(frame, "Appointment Saved");
 			
 			
 		}

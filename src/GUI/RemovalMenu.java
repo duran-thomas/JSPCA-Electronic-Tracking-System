@@ -8,8 +8,9 @@ import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
-public class AppointmentMenu {
+public class RemovalMenu {
 
 	JFrame frame;
 
@@ -20,7 +21,7 @@ public class AppointmentMenu {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AppointmentMenu window = new AppointmentMenu();
+					RemovalMenu window = new RemovalMenu();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +33,7 @@ public class AppointmentMenu {
 	/**
 	 * Create the application.
 	 */
-	public AppointmentMenu() {
+	public RemovalMenu() {
 		initialize();
 	}
 
@@ -45,10 +46,11 @@ public class AppointmentMenu {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		JLabel lblAppointmentMenu = new JLabel("Appointment Menu");
-		lblAppointmentMenu.setFont(new Font("Lucida Bright", Font.BOLD, 20));
-		lblAppointmentMenu.setBounds(123, 22, 194, 24);
-		frame.getContentPane().add(lblAppointmentMenu);
+		JLabel lblRemovalMenu = new JLabel("Removal Menu");
+		lblRemovalMenu.setHorizontalAlignment(SwingConstants.CENTER);
+		lblRemovalMenu.setFont(new Font("Lucida Bright", Font.BOLD, 20));
+		lblRemovalMenu.setBounds(123, 22, 194, 24);
+		frame.getContentPane().add(lblRemovalMenu);
 		
 		JButton btnNewButton = new JButton("Add");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -56,7 +58,7 @@ public class AppointmentMenu {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AddNewRecord window = new AddNewRecord();
+							AddNewRemoval window = new AddNewRemoval();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -74,7 +76,7 @@ public class AppointmentMenu {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							ViewAppointments window = new ViewAppointments();
+							ViewRemovals window = new ViewRemovals();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -92,7 +94,7 @@ public class AppointmentMenu {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							EditDeleteAppointment window = new EditDeleteAppointment();
+							EditDeleteRemoval window = new EditDeleteRemoval();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();

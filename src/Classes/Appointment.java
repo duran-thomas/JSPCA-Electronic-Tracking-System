@@ -122,9 +122,6 @@ public class Appointment extends Intervention{
 					file.writeUTF(obj.location);
 					file.writeInt(obj.idNumber);
 					file.writeUTF(obj.date);
-								
-					Component frame = null;
-					JOptionPane.showMessageDialog(frame, "Appointment Saved");
 					
 				}catch(IOException e){
 					
@@ -179,6 +176,8 @@ public class Appointment extends Intervention{
 		
 		retrieveAppointment(id);
 		createAppointment(ob);
+		
+		
 	}
 	
 	
@@ -206,7 +205,8 @@ public class Appointment extends Intervention{
 			file.writeInt(obj.idNumber);
 			file.writeUTF(obj.date);
 			
-				
+			
+			
 		}catch(IOException e){
 			e.printStackTrace();
 		}finally{

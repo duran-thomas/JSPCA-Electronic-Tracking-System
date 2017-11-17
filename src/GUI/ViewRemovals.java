@@ -9,15 +9,17 @@ import java.io.RandomAccessFile;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import Classes.Removal;
 
 public class ViewRemovals {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -47,7 +49,7 @@ public class ViewRemovals {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 1000, 600);
+		frame.setBounds(100, 100, 1000, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -81,9 +83,7 @@ public class ViewRemovals {
 					int recordSize =(4+(25*2) + (25*2));
 					rFile.length();
 					
-//					System.out.println("Length Of File: " + rFile.length());
 					long numRecords = rFile.length()/recordSize;
-//					System.out.println("Record Size: " + recordSize);
 					
 					
 					
@@ -92,8 +92,7 @@ public class ViewRemovals {
 					model.setColumnIdentifiers(column);
 					model.setRowCount(0);
 					
-					for(int i = 0; i<numRecords; i++){
-//						String line = tableLines[i].toString().trim();
+					for(int i = 0; i<=numRecords; i++){
 						String[] dataRow = getRemovalRequest(i+1);
 						
 						model.addRow(dataRow);
@@ -107,14 +106,50 @@ public class ViewRemovals {
 		});
 		btnRefresh.setBounds(899, 316, 89, 25);
 		frame.getContentPane().add(btnRefresh);
+		
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							RemovalMenu window = new RemovalMenu();
+							window.frame.setVisible(true);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+		btnBack.setBounds(12, 386, 74, 25);
+		frame.getContentPane().add(btnBack);
+		
+		JLabel lblSearch = new JLabel("Search ID:");
+		lblSearch.setBounds(280, 345, 103, 15);
+		frame.getContentPane().add(lblSearch);
+		
+		JTextField textField = new JTextField();
+		textField.setBounds(362, 343, 114, 19);
+		frame.getContentPane().add(textField);
+		textField.setColumns(10);
+		
+		JButton btnSearch = new JButton("Search");
+		btnSearch.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Search For ID
+				
+			}
+		});
+		btnSearch.setBounds(486, 340, 93, 25);
+		frame.getContentPane().add(btnSearch);
 	}
 	
 	public String[] getRemovalRequest(int sid){
 		//Read record as appointment and convert to string array
 		RandomAccessFile file = null;
 		//Removal rem = new Removal();
-		String[] details = new String[14];
-		
+		String[] details = new String[13];
 		
 		try {
 			

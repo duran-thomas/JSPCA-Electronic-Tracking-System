@@ -95,8 +95,7 @@ public class Removal extends Intervention{
 				file.writeUTF(obj.status);
 				
 				
-				Component frame = null;
-				JOptionPane.showMessageDialog(frame, "Removal Request Submitted");
+				
 				}
 
 			}catch(IOException e){
@@ -121,32 +120,23 @@ public class Removal extends Intervention{
 					file.seek((obj.idNumber - 1) * (4+(25*2) + (25*2)));
 
 					file.writeUTF(obj.owner.getfName());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.getlName());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.getTeleNum());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.animal.getType());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.animal.getBreed());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.animal.getGender());
-					file.writeUTF("\t");
 					file.writeInt(obj.owner.animal.getAge());
-					file.writeUTF("\t");
 					file.writeUTF(obj.getReason());
-					file.writeUTF("\t");
 					file.writeUTF(obj.owner.pay.getType());
-					file.writeUTF("\t");
 					file.writeFloat(obj.owner.pay.amt);
-					file.writeUTF("\t");
 					file.writeUTF(obj.address);
-					file.writeUTF("\t");
 					file.writeInt(obj.idNumber);
-					file.writeUTF("\t");
 					file.writeUTF(obj.date);
-					file.writeUTF("\t");
+					file.writeUTF(obj.status);
 
+					Component frame = null;
+					JOptionPane.showMessageDialog(frame, "Removal Request Submitted");
+					
 				}catch(IOException e){
 					e.printStackTrace();
 				}finally{
