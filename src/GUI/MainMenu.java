@@ -58,7 +58,7 @@ public class MainMenu {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AppointmentMenu window = new AppointmentMenu();
+							InterventionMenu window = new InterventionMenu();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
