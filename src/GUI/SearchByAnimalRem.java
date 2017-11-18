@@ -1,34 +1,25 @@
 package GUI;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
-
-import Classes.Appointment;
-
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.Vector;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 
-public class ViewAppointments {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+import Classes.Removal;
+
+public class SearchByAnimalRem {
 
 	JFrame frame;
-	private JTable table;
-	private JScrollPane scrollPane;
-	private JLabel lblSearch;
-	private JTextField textField;
-	private JButton btnSearch;
 
 	/**
 	 * Launch the application.
@@ -37,7 +28,7 @@ public class ViewAppointments {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewAppointments window = new ViewAppointments();
+					SearchByAnimalRem window = new SearchByAnimalRem();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +40,7 @@ public class ViewAppointments {
 	/**
 	 * Create the application.
 	 */
-	public ViewAppointments() {
+	public SearchByAnimalRem() {
 		initialize();
 	}
 
@@ -62,14 +53,14 @@ public class ViewAppointments {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 12, 976, 292);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
+		JTable table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		JButton btnRefresh = new JButton("Refresh Table");
+		JButton btnRefresh = new JButton("Refresh");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -88,25 +79,23 @@ public class ViewAppointments {
 					}
 					*/
 					
-					File rFile = new File("appointment.dat");
+					File rFile = new File("removal.dat");
 					int recordSize =(4+(25*2) + (25*2));
 					rFile.length();
 					
-//					System.out.println("Length Of File: " + rFile.length());
 					long numRecords = rFile.length()/recordSize;
-//					System.out.println("Record Size: " + recordSize);
+					
+					
 					
 					DefaultTableModel model = (DefaultTableModel)table.getModel();
-					String[] column = ("First Name, Last Name, Tele, Type, Breed, Gender, Age, Reason, Pay Type, Amount, Location, ID, Date").split(",");
+					String[] column = ("First Name, Last Name, Tele, Type, Breed, Gender, Age, Reason, Pay Type, Amount, Address, ID, Date, Status").split(",");
 					model.setColumnIdentifiers(column);
 					model.setRowCount(0);
 					
 					for(int i = 0; i<=numRecords; i++){
-//						String line = tableLines[i].toString().trim();
-						String[] dataRow = getAppointment(i+1);
-						if(dataRow != null){
-							model.addRow(dataRow);
-						}
+						String[] dataRow = getRemovalRequest(i+1);
+						
+						model.addRow(dataRow);
 						
 					}
 					
@@ -115,16 +104,16 @@ public class ViewAppointments {
 				}
 			}
 		});
-		btnRefresh.setBounds(856, 316, 132, 25);
+		btnRefresh.setBounds(899, 316, 89, 25);
 		frame.getContentPane().add(btnRefresh);
 		
-		JButton btnNewButton = new JButton("Back");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnBack = new JButton("Back");
+		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AppointmentMenu window = new AppointmentMenu();
+							RemovalMenu window = new RemovalMenu();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -133,40 +122,38 @@ public class ViewAppointments {
 				});
 			}
 		});
-		btnNewButton.setBounds(23, 380, 74, 25);
-		frame.getContentPane().add(btnNewButton);
+		btnBack.setBounds(12, 386, 74, 25);
+		frame.getContentPane().add(btnBack);
 		
-		lblSearch = new JLabel("Search ID:");
+		JLabel lblSearch = new JLabel("Search ID:");
 		lblSearch.setBounds(280, 345, 103, 15);
 		frame.getContentPane().add(lblSearch);
 		
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(362, 343, 114, 19);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Search For ID
 				
-
 			}
 		});
 		btnSearch.setBounds(486, 340, 93, 25);
 		frame.getContentPane().add(btnSearch);
 	}
 	
-	public String[] getAppointment(int sid){
+	public String[] getRemovalRequest(int sid){
 		//Read record as appointment and convert to string array
 		RandomAccessFile file = null;
-		//Appointment app = new Appointment();
+		//Removal rem = new Removal();
 		String[] details = new String[13];
-		
 		
 		try {
 			
-			file = new RandomAccessFile(new File("appointment.dat"),"rw");
+			file = new RandomAccessFile(new File("removal.dat"),"rw");
 			file.seek((sid - 1) * (4+(25*2) + (25*2)));
 			
 			String fn = file.readUTF();
@@ -179,11 +166,12 @@ public class ViewAppointments {
 			String reason = file.readUTF();
 			String payType = file.readUTF();
 			float amt = file.readFloat();
-			String location = file.readUTF();
+			String address = file.readUTF();
 			int iD = file.readInt();
 			String date = file.readUTF();
+			String status = file.readUTF();
 			
-			details = new String[]{fn, ln, phone, animalType, breed, gender, age+"", reason, payType, String.valueOf(amt), location, String.valueOf(iD), date};
+			details = new String[]{fn, ln, phone, animalType, breed, gender, age+"", reason, payType, String.valueOf(amt), address, String.valueOf(iD), date, status};
 		
 		}catch(IOException e){
 			e.printStackTrace();
@@ -196,23 +184,6 @@ public class ViewAppointments {
 		}
 		return details;
 	}
-	
-	
-	/*public void searchTableContents(String searchString) {    
-		  DefaultTableModel model = (DefaultTableModel) table.getModel();
-		    //To empty the table before search
-		  model.setRowCount(0);
-			//To search for contents from original table content
-		    for (Object rows : originalTableModel) {
-		        Vector rowVector = (Vector) rows;
-		        for (Object column : rowVector) {
-		            if (column.toString().contains(searchString)) {
-		                //content found so adding to table
-		            	model.addRow(rowVector);
-		                break;
-		            }
-		        }
-
-		    }
-		}*/
 }
+
+	

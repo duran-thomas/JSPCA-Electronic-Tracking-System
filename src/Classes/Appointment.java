@@ -2,6 +2,7 @@ package Classes;
 
 import java.awt.Component;
 import java.io.*;
+import java.util.Scanner;
 
 import javax.swing.JOptionPane;
 
@@ -157,9 +158,9 @@ public class Appointment extends Intervention{
 			String location = file.readUTF();
 			int iD = file.readInt();
 			String date = file.readUTF();
-			
-			app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
 		
+			app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
+
 		}catch(IOException e){
 			e.printStackTrace();
 		}finally{
@@ -179,7 +180,6 @@ public class Appointment extends Intervention{
 		
 		
 	}
-	
 	
 	public void deleteAppointment(int sid){
 		
@@ -231,5 +231,46 @@ public class Appointment extends Intervention{
 		rec += "\tLocation: " + location + "\tId: " + idNumber + "\tDate: " + date + "\n";
 		
 		System.out.println(rec);
+	}
+	
+	
+	public Appointment searchAppointment(String search){
+		Appointment app = new Appointment();
+		RandomAccessFile file = null;
+		
+		try{
+			try{
+				while(file != null){
+					file = new RandomAccessFile(new File("appointment.dat"), "rw");
+					file.seek(0);
+					
+					String fn = file.readUTF();
+					String ln = file.readUTF();
+					String phone = file.readUTF();
+					String animalType = file.readUTF();
+					String breed = file.readUTF();
+					String gender= file.readUTF();
+					int age = file.readInt();
+					String reason = file.readUTF();
+					String payType = file.readUTF();
+					float amt = file.readFloat();
+					String location = file.readUTF();
+					int iD = file.readInt();
+					String date = file.readUTF();
+					
+					if(location.equals(search)){
+						app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
+						System.out.println(fn+ ln+ phone+ animalType+ breed+ gender+ age+ reason+ payType+ amt+ location+ iD+ date);
+					}
+				}
+				
+			}catch(EOFException w){
+				w.printStackTrace();
+			}
+		}catch(IOException w){
+			w.printStackTrace();
+		}
+		
+		return app;
 	}
 }

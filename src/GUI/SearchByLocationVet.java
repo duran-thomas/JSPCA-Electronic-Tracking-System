@@ -1,34 +1,23 @@
 package GUI;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JTable;
-import javax.swing.JScrollPane;
-import javax.swing.table.DefaultTableModel;
-
-import Classes.Appointment;
-
-import javax.swing.JButton;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.util.Vector;
-import java.awt.event.ActionEvent;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 
-public class ViewAppointments {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
+
+public class SearchByLocationVet {
 
 	JFrame frame;
-	private JTable table;
-	private JScrollPane scrollPane;
-	private JLabel lblSearch;
-	private JTextField textField;
-	private JButton btnSearch;
 
 	/**
 	 * Launch the application.
@@ -37,7 +26,7 @@ public class ViewAppointments {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewAppointments window = new ViewAppointments();
+					SearchByLocationVet window = new SearchByLocationVet();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +38,7 @@ public class ViewAppointments {
 	/**
 	 * Create the application.
 	 */
-	public ViewAppointments() {
+	public SearchByLocationVet() {
 		initialize();
 	}
 
@@ -62,11 +51,11 @@ public class ViewAppointments {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		scrollPane = new JScrollPane();
+		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 12, 976, 292);
 		frame.getContentPane().add(scrollPane);
 		
-		table = new JTable();
+		JTable table = new JTable();
 		scrollPane.setViewportView(table);
 		
 		JButton btnRefresh = new JButton("Refresh Table");
@@ -124,7 +113,7 @@ public class ViewAppointments {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AppointmentMenu window = new AppointmentMenu();
+							VetClinicReportMenuh window = new VetClinicReportMenuh();
 							window.frame.setVisible(true);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -136,16 +125,16 @@ public class ViewAppointments {
 		btnNewButton.setBounds(23, 380, 74, 25);
 		frame.getContentPane().add(btnNewButton);
 		
-		lblSearch = new JLabel("Search ID:");
+		JLabel lblSearch = new JLabel("Search ID:");
 		lblSearch.setBounds(280, 345, 103, 15);
 		frame.getContentPane().add(lblSearch);
 		
-		textField = new JTextField();
+		JTextField textField = new JTextField();
 		textField.setBounds(362, 343, 114, 19);
 		frame.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		btnSearch = new JButton("Search");
+		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//Search For ID
@@ -196,23 +185,5 @@ public class ViewAppointments {
 		}
 		return details;
 	}
-	
-	
-	/*public void searchTableContents(String searchString) {    
-		  DefaultTableModel model = (DefaultTableModel) table.getModel();
-		    //To empty the table before search
-		  model.setRowCount(0);
-			//To search for contents from original table content
-		    for (Object rows : originalTableModel) {
-		        Vector rowVector = (Vector) rows;
-		        for (Object column : rowVector) {
-		            if (column.toString().contains(searchString)) {
-		                //content found so adding to table
-		            	model.addRow(rowVector);
-		                break;
-		            }
-		        }
 
-		    }
-		}*/
 }
