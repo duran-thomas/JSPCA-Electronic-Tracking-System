@@ -56,11 +56,14 @@ public class testDriver {
 	//	re.display();
 		 
 		
-	
+
 		//O.display();		
+		String var1 = "10-Winchester-Road";
+		String var2 = "Caymanas-Track-Limited";
+		
 		
 		Appointment x = new Appointment();
-		x.searchAppointment("10-Winchester-Road");
+		x.searchAppointment();
 
 	}
 }

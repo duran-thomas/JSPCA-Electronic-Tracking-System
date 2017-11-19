@@ -196,23 +196,4 @@ public class ViewAppointments {
 		}
 		return details;
 	}
-	
-	
-	/*public void searchTableContents(String searchString) {    
-		  DefaultTableModel model = (DefaultTableModel) table.getModel();
-		    //To empty the table before search
-		  model.setRowCount(0);
-			//To search for contents from original table content
-		    for (Object rows : originalTableModel) {
-		        Vector rowVector = (Vector) rows;
-		        for (Object column : rowVector) {
-		            if (column.toString().contains(searchString)) {
-		                //content found so adding to table
-		            	model.addRow(rowVector);
-		                break;
-		            }
-		        }
-
-		    }
-		}*/
 }
