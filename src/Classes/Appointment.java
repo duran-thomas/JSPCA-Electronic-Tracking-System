@@ -236,17 +236,27 @@ public class Appointment extends Intervention{
 	}
 	
 	//Function That Dont Work
+<<<<<<< HEAD
 	public void searchAppointment(){
+=======
+	public Appointment searchAppointment(int id){
+		
+>>>>>>> Fixed search method.
 		Appointment app = new Appointment();
 		RandomAccessFile file = null;
 		
 		try{
 					file = new RandomAccessFile(new File("appointment.dat"), "rw");
+<<<<<<< HEAD
 					file.seek(0);
 					
 					
 					
 					while(true){
+=======
+					file.seek((id-1) * (4+(25*2) + (25*2)));							
+					
+>>>>>>> Fixed search method.
 						String fn = file.readUTF();
 						String ln = file.readUTF();
 						String phone = file.readUTF();
@@ -262,6 +272,7 @@ public class Appointment extends Intervention{
 						String date = file.readUTF();
 						
 						app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
+<<<<<<< HEAD
 						System.out.println(fn+ ln+ phone+ animalType+ breed+ gender+ age+ reason+ payType+ amt+ location+ iD+ date);
 					}
 					/* fn = file.readUTF();
@@ -288,6 +299,21 @@ public class Appointment extends Intervention{
 		}catch(IOException w){
 			w.printStackTrace();
 		}
+=======
+						
+						System.out.println(fn+ ln+ phone+ animalType+ breed+ gender+ age+ reason+ payType+ amt+ location+ iD+ date);
+				
+		}catch(IOException w){
+			w.printStackTrace();
+		}finally {
+			try {
+				file.close();
+			}catch(IOException z){
+				z.printStackTrace();
+			}
+		}
+		return app;
+>>>>>>> Fixed search method.
 		
 		
 	}
