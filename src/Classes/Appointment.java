@@ -236,27 +236,21 @@ public class Appointment extends Intervention{
 	}
 	
 	//Function That Dont Work
-<<<<<<< HEAD
-	public void searchAppointment(){
-=======
-	public Appointment searchAppointment(int id){
-		
->>>>>>> Fixed search method.
+
+
+	public Appointment searchAppointment(String address){
+
 		Appointment app = new Appointment();
 		RandomAccessFile file = null;
 		
-		try{
-					file = new RandomAccessFile(new File("appointment.dat"), "rw");
-<<<<<<< HEAD
-					file.seek(0);
+			try {
+				
+				file = new RandomAccessFile(new File("appointment.dat"), "r");	
+				
+				for(int idx = 1; idx < 100; idx++) {	
 					
-					
-					
-					while(true){
-=======
-					file.seek((id-1) * (4+(25*2) + (25*2)));							
-					
->>>>>>> Fixed search method.
+				file.seek((idx - 1) * (4+(25*2) + (25*2)));
+
 						String fn = file.readUTF();
 						String ln = file.readUTF();
 						String phone = file.readUTF();
@@ -269,43 +263,19 @@ public class Appointment extends Intervention{
 						float amt = file.readFloat();
 						String location = file.readUTF();
 						int iD = file.readInt();
-						String date = file.readUTF();
-						
+						String date = file.readUTF();		
+		
+						if(location.equals(address)) {
+				
 						app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
-<<<<<<< HEAD
-						System.out.println(fn+ ln+ phone+ animalType+ breed+ gender+ age+ reason+ payType+ amt+ location+ iD+ date);
-					}
-					/* fn = file.readUTF();
-					String ln = file.readUTF();
-					String phone = file.readUTF();
-					String animalType = file.readUTF();
-					String breed = file.readUTF();
-					String gender= file.readUTF();
-					int age = file.readInt();
-					String reason = file.readUTF();
-					String payType = file.readUTF();
-					float amt = file.readFloat();
-					String location = file.readUTF();
-					int iD = file.readInt();
-					String date = file.readUTF();
+	
+						System.out.println(fn+ "\t" + ln+ "\t" + phone+ "\t" + animalType+ "\t" + breed+ "\t" + gender+ "\t" + age+ "\t" + reason+ "\t" + payType+ "\t" + amt+ "\t" + location+ "\t" + iD+ "\t" + date);
 					
-					app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
-					System.out.println(fn+ ln+ phone+ animalType+ breed+ gender+ age+ reason+ payType+ amt+ location+ iD+ date);
-					//if(location.equals(search)){
-						//app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
-						//System.out.println(fn+ ln+ phone+ animalType+ breed+ gender+ age+ reason+ payType+ amt+ location+ iD+ date);
-					//}*/
-				
-		}catch(IOException w){
-			w.printStackTrace();
+			}
 		}
-=======
-						
-						System.out.println(fn+ ln+ phone+ animalType+ breed+ gender+ age+ reason+ payType+ amt+ location+ iD+ date);
-				
-		}catch(IOException w){
-			w.printStackTrace();
-		}finally {
+			}catch(IOException w){
+				w.printStackTrace();
+			}finally {
 			try {
 				file.close();
 			}catch(IOException z){
@@ -313,7 +283,7 @@ public class Appointment extends Intervention{
 			}
 		}
 		return app;
->>>>>>> Fixed search method.
+
 		
 		
 	}
