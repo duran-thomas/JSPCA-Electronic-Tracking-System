@@ -125,8 +125,8 @@ public class SearchByLocationRem {
 		btnBack.setBounds(12, 386, 74, 25);
 		frame.getContentPane().add(btnBack);
 		
-		JLabel lblSearch = new JLabel("Search ID:");
-		lblSearch.setBounds(280, 345, 103, 15);
+		JLabel lblSearch = new JLabel("Search Location:");
+		lblSearch.setBounds(233, 345, 128, 15);
 		frame.getContentPane().add(lblSearch);
 		
 		JTextField textField = new JTextField();

@@ -124,25 +124,6 @@ public class ViewRemovals {
 		});
 		btnBack.setBounds(12, 386, 74, 25);
 		frame.getContentPane().add(btnBack);
-		
-		JLabel lblSearch = new JLabel("Search ID:");
-		lblSearch.setBounds(280, 345, 103, 15);
-		frame.getContentPane().add(lblSearch);
-		
-		JTextField textField = new JTextField();
-		textField.setBounds(362, 343, 114, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		JButton btnSearch = new JButton("Search");
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Search For ID
-				
-			}
-		});
-		btnSearch.setBounds(486, 340, 93, 25);
-		frame.getContentPane().add(btnSearch);
 	}
 	
 	public String[] getRemovalRequest(int sid){

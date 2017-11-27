@@ -26,9 +26,6 @@ public class ViewAppointments {
 	JFrame frame;
 	private JTable table;
 	private JScrollPane scrollPane;
-	private JLabel lblSearch;
-	private JTextField textField;
-	private JButton btnSearch;
 
 	/**
 	 * Launch the application.
@@ -118,25 +115,6 @@ public class ViewAppointments {
 		});
 		btnNewButton.setBounds(23, 380, 74, 25);
 		frame.getContentPane().add(btnNewButton);
-		
-		lblSearch = new JLabel("Search ID:");
-		lblSearch.setBounds(280, 345, 103, 15);
-		frame.getContentPane().add(lblSearch);
-		
-		textField = new JTextField();
-		textField.setBounds(362, 343, 114, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
-		
-		btnSearch = new JButton("Search");
-		btnSearch.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//Search For ID
-				
-			}
-		});
-		btnSearch.setBounds(486, 340, 93, 25);
-		frame.getContentPane().add(btnSearch);
 	}
 	
 	public String[] getAppointment(int sid){

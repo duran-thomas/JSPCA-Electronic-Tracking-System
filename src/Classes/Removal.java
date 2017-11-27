@@ -231,6 +231,117 @@ public class Removal extends Intervention{
 		}
 	}
 	
+	
+	public Removal[] searchRemoval(String search){
+		 
+		Removal[] y = new Removal[100];
+		RandomAccessFile file = null;
+		int count = 0;
+		
+			try {
+				
+				file = new RandomAccessFile(new File("removal.dat"), "r");	
+				
+				for(int idx = 1; idx < file.length(); idx++) {	
+					
+				file.seek((idx - 1) * (4+(25*2) + (25*2)));
+
+						String fn = file.readUTF();
+						String ln = file.readUTF();
+						String phone = file.readUTF();
+						String animalType = file.readUTF();
+						String breed = file.readUTF();
+						String gender= file.readUTF();
+						int age = file.readInt();
+						String reason = file.readUTF();
+						String payType = file.readUTF();
+						float amt = file.readFloat();
+						String location = file.readUTF();
+						int iD = file.readInt();
+						String date = file.readUTF();
+						String status = file.readUTF();
+		
+						if(location.equals(search)) {
+
+							//counts how many time the location matches to set the array index
+							count++;
+						y[count] = new Removal(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date,status);
+	
+			//			System.out.println(fn+ "\t" + ln+ "\t" + phone+ "\t" + animalType+ "\t" + breed+ "\t" + gender+ "\t" + age+ "\t" + reason+ "\t" + payType+ "\t" + amt+ "\t" + location+ "\t" + iD+ "\t" + date);
+						
+			}
+						
+		}
+			
+			}catch(IOException w){
+				w.printStackTrace();
+			}finally {
+			try {
+				file.close();
+			}catch(IOException z){
+				z.printStackTrace();
+			}
+		}
+			//returns the object array
+			return y;	
+	}
+	
+	
+	public Removal[] searchRemovalAnimal(String search){
+		 
+		Removal[] y = new Removal[100];
+		RandomAccessFile file = null;
+		int count = 0;
+		
+			try {
+				
+				file = new RandomAccessFile(new File("removal.dat"), "r");	
+				
+				for(int idx = 1; idx < file.length(); idx++) {	
+					
+				file.seek((idx - 1) * (4+(25*2) + (25*2)));
+
+						String fn = file.readUTF();
+						String ln = file.readUTF();
+						String phone = file.readUTF();
+						String animalType = file.readUTF();
+						String breed = file.readUTF();
+						String gender= file.readUTF();
+						int age = file.readInt();
+						String reason = file.readUTF();
+						String payType = file.readUTF();
+						float amt = file.readFloat();
+						String location = file.readUTF();
+						int iD = file.readInt();
+						String date = file.readUTF();		
+						String status = file.readUTF();
+		
+						if(animalType.equals(search)) {
+
+							//counts how many time the location matches to set the array index
+							count++;
+						y[count] = new Removal(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date, status);
+	
+			//			System.out.println(fn+ "\t" + ln+ "\t" + phone+ "\t" + animalType+ "\t" + breed+ "\t" + gender+ "\t" + age+ "\t" + reason+ "\t" + payType+ "\t" + amt+ "\t" + location+ "\t" + iD+ "\t" + date);
+						
+			}
+						
+		}
+			
+			}catch(IOException w){
+				w.printStackTrace();
+			}finally {
+			try {
+				file.close();
+			}catch(IOException z){
+				z.printStackTrace();
+			}
+		}
+			//returns the object array
+			return y;	
+	}
+	
+	
 	public void display() {
 
 		String rec;
@@ -244,5 +355,7 @@ public class Removal extends Intervention{
 
 		System.out.println(rec);
 	}
+	
+	
 
 }

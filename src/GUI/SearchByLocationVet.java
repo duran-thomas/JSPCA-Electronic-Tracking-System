@@ -185,11 +185,10 @@ public class SearchByLocationVet {
 	public String[] getAppointment(int sid){
 		//Read record as appointment and convert to string array
 		RandomAccessFile file = null;
-		//Appointment app = new Appointment();
+		
 		String[] details = new String[13];
 		
 		try {
-			
 			file = new RandomAccessFile(new File("appointment.dat"),"rw");
 			file.seek((sid - 1) * (4+(25*2) + (25*2)));
 			

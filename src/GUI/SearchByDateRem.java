@@ -125,8 +125,8 @@ public class SearchByDateRem {
 		btnNewButton.setBounds(23, 380, 74, 25);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblSearch = new JLabel("Search ID:");
-		lblSearch.setBounds(280, 345, 103, 15);
+		JLabel lblSearch = new JLabel("Search Date:");
+		lblSearch.setBounds(255, 345, 103, 15);
 		frame.getContentPane().add(lblSearch);
 		
 		JTextField textField = new JTextField();

@@ -13,6 +13,10 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+
+import Classes.Appointment;
+import Classes.Removal;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -89,6 +93,7 @@ public class EditDeleteRemoval {
 				String pay = table.getValueAt(table.getSelectedRow(), 8).toString();
 				String amnt = table.getValueAt(table.getSelectedRow(), 9).toString();
 				String lctn = table.getValueAt(table.getSelectedRow(), 10).toString();
+				String id = table.getValueAt(table.getSelectedRow(), 11).toString();
 				String dt = table.getValueAt(table.getSelectedRow(), 12).toString();
 				String stat = table.getValueAt(table.getSelectedRow(), 13).toString();
 				
@@ -165,6 +170,40 @@ public class EditDeleteRemoval {
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String fname = table.getValueAt(table.getSelectedRow(), 0).toString();
+				String lname = table.getValueAt(table.getSelectedRow(), 1).toString();
+				String tele = table.getValueAt(table.getSelectedRow(), 2).toString();
+				String atype = table.getValueAt(table.getSelectedRow(), 3).toString();
+				String abreed = table.getValueAt(table.getSelectedRow(), 4).toString();
+				String agender = table.getValueAt(table.getSelectedRow(), 5).toString();
+				String aage = table.getValueAt(table.getSelectedRow(), 6).toString();
+				String rsn = table.getValueAt(table.getSelectedRow(), 7).toString();
+				String pay = table.getValueAt(table.getSelectedRow(), 8).toString();
+				String amnt = table.getValueAt(table.getSelectedRow(), 9).toString();
+				String lctn = table.getValueAt(table.getSelectedRow(), 10).toString();
+				int id = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 11).toString());
+				String dt = table.getValueAt(table.getSelectedRow(), 12).toString();
+				String stat = table.getValueAt(table.getSelectedRow(), 13).toString();
+				
+				
+				
+				String fn = firstName.getText();
+				String ln = lastName.getText();
+				String tel = telephone.getText();
+				String antype = type.getText();
+				String anbreed = breed.getText();
+				String angender = gender.getText();
+				int anage = Integer.parseInt(age.getText());
+				String reasn = reason.getText();
+				String payment = payType.getText();
+				Float amt = Float.parseFloat(amount.getText());
+				String location = address.getText();
+				String dat = date.getText();
+				String sttus = status.getText();
+				
+				Removal update = new Removal(fn, ln, tel, antype, anbreed, angender, anage, reasn, payment, amt, location, id, dat, sttus);
+				update.updateRemoval(id, update);
+				
 				Component frame = null;
 				JOptionPane.showMessageDialog(frame, "Removal Request Has Been Updated");
 			}
@@ -175,6 +214,12 @@ public class EditDeleteRemoval {
 		JButton btnDelete = new JButton("Delete");
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				String id = table.getValueAt(table.getSelectedRow(), 11).toString();
+				
+				Removal del = new Removal();
+				int idNum = Integer.parseInt(id);
+				del.deleteRemoval(idNum);
 				
 				Component frame = null;
 				JOptionPane.showMessageDialog(frame, "Removal Request Deleted");

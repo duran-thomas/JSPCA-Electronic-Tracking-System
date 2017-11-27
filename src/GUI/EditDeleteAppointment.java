@@ -16,6 +16,8 @@ import javax.swing.table.DefaultTableModel;
 
 import com.sun.glass.events.MouseEvent;
 
+import Classes.Appointment;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -184,6 +186,39 @@ public class EditDeleteAppointment {
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String fname = table.getValueAt(table.getSelectedRow(), 0).toString();
+				String lname = table.getValueAt(table.getSelectedRow(), 1).toString();
+				String tele = table.getValueAt(table.getSelectedRow(), 2).toString();
+				String atype = table.getValueAt(table.getSelectedRow(), 3).toString();
+				String abreed = table.getValueAt(table.getSelectedRow(), 4).toString();
+				String agender = table.getValueAt(table.getSelectedRow(), 5).toString();
+				String aage = table.getValueAt(table.getSelectedRow(), 6).toString();
+				String rsn = table.getValueAt(table.getSelectedRow(), 7).toString();
+				String pay = table.getValueAt(table.getSelectedRow(), 8).toString();
+				String amnt = table.getValueAt(table.getSelectedRow(), 9).toString();
+				String lctn = table.getValueAt(table.getSelectedRow(), 10).toString();
+				int id = Integer.parseInt(table.getValueAt(table.getSelectedRow(), 11).toString());
+				String dt = table.getValueAt(table.getSelectedRow(), 12).toString();
+				
+				String fn = firstName.getText();
+				String ln = lastName.getText();
+				String tel = telephone.getText();
+				String antype = type.getText();
+				String anbreed = breed.getText();
+				String angender = gender.getText();
+				int anage = Integer.parseInt(age.getText());
+				String reasn = reason.getText();
+				String payType = payment.getText();
+				Float amt = Float.parseFloat(amount.getText());
+				String adrs = location.getText();
+				String dat = date.getText();
+				
+				
+				
+				Appointment update = new Appointment(fn, ln, tel, antype, anbreed, angender, anage, reasn, payType, amt, adrs,id, dat);
+				update.updateAppointment(id, update);
+				
+				
 				Component frame = null;
 				JOptionPane.showMessageDialog(frame, "Appointment Has Been Updated");
 			}
@@ -308,6 +343,12 @@ public class EditDeleteAppointment {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				String id = table.getValueAt(table.getSelectedRow(), 11).toString();
+				
+				Appointment del = new Appointment();
+				int idNum = Integer.parseInt(id);
+				del.deleteAppointment(idNum);
+				
 				Component frame = null;
 				JOptionPane.showMessageDialog(frame, "Appointment Deleted");
 			}
@@ -321,7 +362,6 @@ public class EditDeleteAppointment {
 		RandomAccessFile file = null;
 		//Appointment app = new Appointment();
 		String[] details = new String[13];
-		
 		
 		try {
 			

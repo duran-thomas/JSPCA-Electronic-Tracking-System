@@ -73,13 +73,13 @@ public class testDriver {
 		Appointment x = new Appointment();	
 		
 		//declare an object array that holds 100 records
-		Appointment[] y = new Appointment[100];
+		Appointment[] z = new Appointment[100];
 		
 		//stores the object array result in an object array
-		y = x.searchAppointment(var1);
-
-
+		//y = x.searchAppointment(var1);
+		
+		z = x.searchAppointmentAnimal("Bird");
 		//Show method is called passing in an object array
-		x.show(y);
+		x.show(z);
 	}
 }

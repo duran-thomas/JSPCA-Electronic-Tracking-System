@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,6 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JComboBox;
 
 public class SearchByAnimalVet {
 
@@ -125,14 +127,9 @@ public class SearchByAnimalVet {
 		btnNewButton.setBounds(23, 380, 74, 25);
 		frame.getContentPane().add(btnNewButton);
 		
-		JLabel lblSearch = new JLabel("Search ID:");
-		lblSearch.setBounds(280, 345, 103, 15);
+		JLabel lblSearch = new JLabel("Search By Animal:");
+		lblSearch.setBounds(201, 345, 143, 15);
 		frame.getContentPane().add(lblSearch);
-		
-		JTextField textField = new JTextField();
-		textField.setBounds(362, 343, 114, 19);
-		frame.getContentPane().add(textField);
-		textField.setColumns(10);
 		
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
@@ -144,6 +141,11 @@ public class SearchByAnimalVet {
 		});
 		btnSearch.setBounds(486, 340, 93, 25);
 		frame.getContentPane().add(btnSearch);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(343, 340, 116, 24);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Dog", "Cat", "Bird", "Horse", "Goat", "Cow"}));
+		frame.getContentPane().add(comboBox);
 	}
 	
 	public String[] getAppointment(int sid){
