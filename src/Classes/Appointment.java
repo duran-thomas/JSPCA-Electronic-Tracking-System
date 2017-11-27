@@ -1,12 +1,8 @@
 package Classes;
-
-import java.awt.Component;
 import java.io.*;
-import java.util.Scanner;
-import java.util.StringTokenizer;
 
 
-import javax.swing.JOptionPane;
+
 
 public class Appointment extends Intervention{
 	
@@ -235,6 +231,7 @@ public class Appointment extends Intervention{
 		System.out.println(rec);
 	}
 	
+
 	//This method accepts an object array of records to print each record.
 	//NOTE - We can use this as an overriding method and override the display method
 	public void show(Appointment[] g) {
@@ -257,7 +254,6 @@ public class Appointment extends Intervention{
 	
 	//method returns an object array of records
 	public Appointment[] searchAppointment(String search){
-
 		 
 		Appointment[] y = new Appointment[100];
 		RandomAccessFile file = null;
@@ -286,6 +282,7 @@ public class Appointment extends Intervention{
 						String date = file.readUTF();		
 		
 						if(location.equals(search)) {
+
 							//counts how many time the location matches to set the array index
 							count++;
 						y[count] = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
