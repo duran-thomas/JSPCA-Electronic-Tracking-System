@@ -71,7 +71,7 @@ public class testDriver {
 				
 		Appointment x = new Appointment();
 
-		x.searchAppointment(var1);
+		x.searchAppointment(var2);
 
 
 	}

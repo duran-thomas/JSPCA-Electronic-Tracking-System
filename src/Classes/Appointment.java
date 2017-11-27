@@ -235,10 +235,7 @@ public class Appointment extends Intervention{
 		System.out.println(rec);
 	}
 	
-	//Function That Dont Work
-
-
-	public Appointment searchAppointment(String address){
+	public Appointment searchAppointment(String search){
 
 		Appointment app = new Appointment();
 		RandomAccessFile file = null;
@@ -265,12 +262,11 @@ public class Appointment extends Intervention{
 						int iD = file.readInt();
 						String date = file.readUTF();		
 		
-						if(location.equals(address)) {
+						if(location.equals(search)) {
 				
 						app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
 	
 						System.out.println(fn+ "\t" + ln+ "\t" + phone+ "\t" + animalType+ "\t" + breed+ "\t" + gender+ "\t" + age+ "\t" + reason+ "\t" + payType+ "\t" + amt+ "\t" + location+ "\t" + iD+ "\t" + date);
-					
 			}
 		}
 			}catch(IOException w){
@@ -283,8 +279,5 @@ public class Appointment extends Intervention{
 			}
 		}
 		return app;
-
-		
-		
 	}
 }
