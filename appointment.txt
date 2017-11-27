@@ -1,2 +1,0 @@
-Duran	Thomas	4040244	Dog	Pitbull	Male	2	Sick	Full	9000.0	10 Winchester Road	12345678-A	15-11-2017
-Jovion	Curtis	4190014	Dog	Pit	Male	1	Cut	Partial	5500.0	10-Winchester-Road	1234567-B	15-11-2017
