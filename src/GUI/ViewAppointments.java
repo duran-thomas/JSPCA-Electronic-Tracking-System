@@ -72,37 +72,20 @@ public class ViewAppointments {
 		JButton btnRefresh = new JButton("Refresh Table");
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				try{
-					/*
-					BufferedReader populate = new BufferedReader(new FileReader("appointment.dat"));
-					String[] column = ("First Name, Last Name, Tele, Type, Breed, Gender, Age, Reason, Pay Type, Amount, Location, ID, Date").split(",");
-					DefaultTableModel model = (DefaultTableModel)table.getModel();
-					model.setColumnIdentifiers(column);
-					model.setRowCount(0);
-					
-					Object[] tableLines = populate.lines().toArray();
-					for(int i = 0; i<tableLines.length; i++){
-						String line = tableLines[i].toString().trim();
-						String[] dataRow = line.split("|");
-						model.addRow(dataRow);
-					}
-					*/
-					
+				try{			
 					File rFile = new File("appointment.dat");
 					int recordSize =(4+(25*2) + (25*2));
 					rFile.length();
 					
-//					System.out.println("Length Of File: " + rFile.length());
+
 					long numRecords = rFile.length()/recordSize;
-//					System.out.println("Record Size: " + recordSize);
-					
+
 					DefaultTableModel model = (DefaultTableModel)table.getModel();
 					String[] column = ("First Name, Last Name, Tele, Type, Breed, Gender, Age, Reason, Pay Type, Amount, Location, ID, Date").split(",");
 					model.setColumnIdentifiers(column);
 					model.setRowCount(0);
 					
 					for(int i = 0; i<=numRecords; i++){
-//						String line = tableLines[i].toString().trim();
 						String[] dataRow = getAppointment(i+1);
 						if(dataRow != null){
 							model.addRow(dataRow);
@@ -150,7 +133,6 @@ public class ViewAppointments {
 			public void actionPerformed(ActionEvent e) {
 				//Search For ID
 				
-
 			}
 		});
 		btnSearch.setBounds(486, 340, 93, 25);

@@ -235,19 +235,39 @@ public class Appointment extends Intervention{
 		System.out.println(rec);
 	}
 	
-	//Function That Dont Work
+	//This method accepts an object array of records to print each record.
+	//NOTE - We can use this as an overriding method and override the display method
+	public void show(Appointment[] g) {
+		
+		String rec;
+		
+		//loop through all elements of the array
+		for (int i=1; i<g.length; i++) {
+			
+			rec = "\nFirstname: " + g[i].owner.getfName() + "\tLastname: " + g[i].owner.getlName();
+			rec += "\tTelephone: " + g[i].owner.getTeleNum() + "\nAnimal Type: " + g[i].owner.animal.getType();
+			rec += "\tBreed: " + g[i].owner.animal.getBreed() + "\tGender: " + g[i].owner.animal.getGender();
+			rec += "\tAnimal Age: " + g[i].owner.animal.getAge() + "\tReason: " + g[i].getReason();
+			rec += "\nPay Type: " + g[i].owner.pay.getType() + "\tAmount: " + g[i].owner.pay.amt;
+			rec += "\tLocation: " + g[i].location + "\tId: " + g[i].idNumber + "\tDate: " + g[i].date + "\n";
+			
+			System.out.println(rec);
+		}
+	}
+	
+	//method returns an object array of records
+	public Appointment[] searchAppointment(String search){
 
-
-	public Appointment searchAppointment(String address){
-
-		Appointment app = new Appointment();
+		 
+		Appointment[] y = new Appointment[100];
 		RandomAccessFile file = null;
+		int count = 0;
 		
 			try {
 				
 				file = new RandomAccessFile(new File("appointment.dat"), "r");	
 				
-				for(int idx = 1; idx < 100; idx++) {	
+				for(int idx = 1; idx < file.length(); idx++) {	
 					
 				file.seek((idx - 1) * (4+(25*2) + (25*2)));
 
@@ -265,14 +285,17 @@ public class Appointment extends Intervention{
 						int iD = file.readInt();
 						String date = file.readUTF();		
 		
-						if(location.equals(address)) {
-				
-						app = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
+						if(location.equals(search)) {
+							//counts how many time the location matches to set the array index
+							count++;
+						y[count] = new Appointment(fn, ln, phone, animalType, breed, gender, age, reason, payType, amt, location, iD, date);
 	
-						System.out.println(fn+ "\t" + ln+ "\t" + phone+ "\t" + animalType+ "\t" + breed+ "\t" + gender+ "\t" + age+ "\t" + reason+ "\t" + payType+ "\t" + amt+ "\t" + location+ "\t" + iD+ "\t" + date);
-					
+			//			System.out.println(fn+ "\t" + ln+ "\t" + phone+ "\t" + animalType+ "\t" + breed+ "\t" + gender+ "\t" + age+ "\t" + reason+ "\t" + payType+ "\t" + amt+ "\t" + location+ "\t" + iD+ "\t" + date);
+						
 			}
+						
 		}
+			
 			}catch(IOException w){
 				w.printStackTrace();
 			}finally {
@@ -282,9 +305,7 @@ public class Appointment extends Intervention{
 				z.printStackTrace();
 			}
 		}
-		return app;
-
-		
-		
+			//returns the object array
+			return y;	
 	}
 }

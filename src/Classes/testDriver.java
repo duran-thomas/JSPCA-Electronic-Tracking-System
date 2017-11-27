@@ -69,10 +69,15 @@ public class testDriver {
 		String var1 = "10-Winchester-Road";
 		String var2 = "Caymanas-Track-Limited";
 				
-		Appointment x = new Appointment();
+		Appointment x = new Appointment();	
+		
+		//declare an object array that holds 100 records
+		Appointment[] y = new Appointment[100];
+		
+		//stores the object array result in an object array
+		y = x.searchAppointment(var1);
 
-		x.searchAppointment(var1);
-
-
+		//Show method is called passing in an object array
+		x.show(y);
 	}
 }
