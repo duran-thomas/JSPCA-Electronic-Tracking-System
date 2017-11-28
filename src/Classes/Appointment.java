@@ -133,10 +133,10 @@ public class Appointment extends Intervention{
 				}
 		}
 	
-	public Appointment retrieveAppointment(int sid) {
+	public Intervention retrieveAppointment(int sid) {
 		
 		RandomAccessFile file = null;
-		Appointment app = new Appointment();
+		Intervention app = new Appointment();
 				
 		try {
 			

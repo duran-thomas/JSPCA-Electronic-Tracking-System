@@ -148,10 +148,10 @@ public class Removal extends Intervention{
 				}
 		}
 	
-	public Removal retrieveRemoval(int sid) {
+	public Intervention retrieveRemoval(int sid) {
 
 		RandomAccessFile file = null;
-		Removal rem = new Removal();
+		Intervention rem = new Removal();
 
 		try {
 

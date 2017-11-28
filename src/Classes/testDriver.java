@@ -78,7 +78,7 @@ public class testDriver {
 		//stores the object array result in an object array
 		//y = x.searchAppointment(var1);
 		
-		z = x.searchAppointmentAnimal("Bird");
+		z = x.searchAppointmentAnimal("Dog");
 		//Show method is called passing in an object array
 		x.show(z);
 	}
